@@ -1,0 +1,10 @@
+[project]
+name = "browser-use-implementation"
+version = "0.1.0"
+description = "Browser Automation Agent"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "browser-use>=0.5.5",
+    "lmnr[all]>=0.6.21",
+]
