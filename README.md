@@ -7,12 +7,13 @@ This project implements a browser automation agent for `Bunnings website` using 
 - [Overview](#overview)
 - [How It Works](#how-it-works)
 - [AI Documentation](#ai-documentation)
-- [Prerequisites](#prerequisites)  
-- [Installation](#installation)  
-- [Configuration](#configuration)  
-- [Usage](#usage)  
-- [Contributing](#contributing)  
-- [License](#license)  
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Evaluation](#evaluation)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Overview
 
@@ -38,21 +39,19 @@ This automation agent combines several technologies to understand and interact w
 
 **Laminar**: Laminar is used as the evaluation and orchestration controller for the browser automation tasks. Tasks are run under Laminar’s supervision, providing structured logging, evaluation metrics, and easy integration into CI pipelines.
 
-
-
 ## AI Documentation
 
 ### AI Decision Making and Edge Cases
 
 The agent operates in a loop to achieve the user's objective:
 
-1. **Goal & Context**  
-   Start with the user’s high-level goal and the current URL.  
-2. **Analyze the Page**  
-   Capture the page state (e.g., via screenshot and element detection) to map clickable buttons, inputs, links, etc.  
-3. **Consult the AI**  
-   Send the goal, URL, and page map to the LLM.  
-4. **Receive Action**  
+1. **Goal & Context**
+   Start with the user’s high-level goal and the current URL.
+2. **Analyze the Page**
+   Capture the page state (e.g., via screenshot and element detection) to map clickable buttons, inputs, links, etc.
+3. **Consult the AI**
+   Send the goal, URL, and page map to the LLM.
+4. **Receive Action**
    The AI model returns a specific command in a structured format (JSON), such as `{"action": "click", "element_id": "login-button"}` or `{"action": "type", "element_id": "search-bar", "text": "chair"}`.
 5. **Execute Action**
    Automation (Playwright) performs the command.
@@ -97,37 +96,45 @@ Refer Brave browser installation instructions from https://brave.com/brave-brows
 
 ## Configuration
 
-Copy the `.env.example` file as `.env` file in the project root directory. Add your LLM Provider API keys to the `.env` file or run an LLM locally using [Ollama](https://ollama.com/). You can change all the model names by changing the `DEFAULT_OLLAMA_MODEL`, `DEFAULT_OPENAI_MODEL`, `DEFAULT_GOOGLE_MODEL`, and `DEFAULT_GROQ_MODEL` variables in the `automation-agent.py` file.
+Copy the `.env.example` file as `.env` file in the project root directory. Add your LLM Provider API keys to the `.env` file or run an LLM locally using [Ollama](https://ollama.com/). You can change all the model names by changing the `DEFAULT_OLLAMA_MODEL`, `DEFAULT_OPENAI_MODEL`, `DEFAULT_GOOGLE_MODEL`, and `DEFAULT_GROQ_MODEL` variables in the `automation_agent.py` file.
 
 ## Usage
 
 ### Running the agent with OpenAI after adding OpenAI API key to the `.env` file
 
 ```bash
-uv run automation-agent.py -q "chair" -p openai
+uv run automation_agent.py -q "chair" -p openai
 ```
 
 ### Running the agent with Ollama
 
 ```bash
-uv run automation-agent.py -q "4 step ladder" -p ollama --postcode "3000"
+uv run automation_agent.py -q "4 step ladder" -p ollama --postcode "3000"
 ```
 
 ### Running the agent with Google after adding Google API key to the `.env` file
 
 ```bash
-uv run automation-agent.py -q "2 step ladder" -p google --suburb-address "Anytown"
+uv run automation_agent.py -q "2 step ladder" -p google --suburb-address "Anytown"
 ```
 
 ### Running the agent with Groq after adding Groq API key to the `.env` file
 
 ```bash
-uv run automation-agent.py -q "treadmill" -p groq --street-address "123 Main St" --unit "Apt 4B" --suburb-address "Anytown" --state "VIC" --postcode "3000"
+uv run automation_agent.py -q "treadmill" -p groq --street-address "123 Main St" --unit "Apt 4B" --suburb-address "Anytown" --state "VIC" --postcode "3000"
+```
+
+## Evaluation
+
+### Running the agent evaluation with Laminar
+
+```bash
+uv run agent_evaluation.py
 ```
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.  
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 Make sure to run tests and update them as appropriate.
 
 ## License

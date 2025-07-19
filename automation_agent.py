@@ -68,7 +68,6 @@ store card with stock. If still no store is found, report "Product found out of 
 14. Don't try to fill the contact form or any other form.
 15. If you still see "Continue to checkout" if you still see it.
 16. That's it! Return the final successful output as "SUCCESS" for evaluation.
-
 """
 
 def get_llm(provider: str) -> Any:
