@@ -29,11 +29,11 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 NAVIGATOR_TASK_TEMPLATE = """
-0. Do not attempt to login or sign up; assume guest or anonymous access; do not navigate to unrelated sections 
-or external pages. 
-1. Remain on the product search results and cart pages. You only need 1 product to checkout. 
-2. If a popup appears asking to install or run Google Widevine (e.g. "www.bunnings.com.au is asking you to install 
-and run Google Widevine"), click "Block" or "X" to dismiss it. Do not allow or interact with the installation. 
+0. Do not attempt to login or sign up; assume guest or anonymous access; do not navigate to unrelated sections
+or external pages.
+1. Remain on the product search results and cart pages. You only need 1 product to checkout.
+2. If a popup appears asking to install or run Google Widevine (e.g. "www.bunnings.com.au is asking you to install
+and run Google Widevine"), click "Block" or "X" to dismiss it. Do not allow or interact with the installation.
 Continue with the page interaction.
 3. Go to https://www.bunnings.com.au and wait for full page load.
 4. If a location permission modal appears, click "Don't Allow". Continue with the page interaction.
@@ -55,18 +55,20 @@ Continue with the page interaction.
        - Enter postcode: "{postcode}".
    8d. Click "Confirm Address". If unable to proceed, report "Unable to enter delivery address".
 9. In "Review Cart", if no collection store is selected, click "Find a store".
-10. In the right drawer, enter the user's postcode or suburb: "{location}" in the "Search postcode or suburb" field if they have provided it. 
-Click on the first search result that says "Available to order" or "Item in Stock". If there are no results, report 
-"No stores found with this product in stock in your area. You may need to check your postcode or suburb, 
-try a different product, or try a different store.". 
+10. In the right drawer, enter the user's postcode or suburb: "{location}" in the "Search postcode or suburb" field if they have provided it.
+Click on the first search result that says "Available to order" or "Item in Stock". If there are no results, report
+"No stores found with this product in stock in your area. You may need to check your postcode or suburb,
+try a different product, or try a different store.".
 If all the stores say "Unavailable", report "Product found out of stock at all stores".
-11. Click on the first store card that says "Available to order" or "Item in Stock". If there are no stores with the 
-product in stock visible from the current list, check "Show stores with in stock items only" and then click the first 
+11. Click on the first store card that says "Available to order" or "Item in Stock". If there are no stores with the
+product in stock visible from the current list, check "Show stores with in stock items only" and then click the first
 store card with stock. If still no store is found, report "Product found out of stock at all stores".
 12. Click on "Click & Collect from <Store Name>" button at the bottom. If unable to proceed, report "Unable to checkout".
 13. Click "Continue to checkout". If unable to proceed, report "Unable to checkout".
 14. Don't try to fill the contact form or any other form.
-15. That's it! Return the final successful output as "SUCCESS" for evaluation. 
+15. If you still see "Continue to checkout" if you still see it.
+16. That's it! Return the final successful output as "SUCCESS" for evaluation.
+
 """
 
 def get_llm(provider: str) -> Any:

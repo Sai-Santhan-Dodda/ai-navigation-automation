@@ -34,7 +34,7 @@ evaluate(
     data=[
         {
             "data": {
-                "product_name": "chair", 
+                "product_name": "chair",
                 "provider": "openai",
                 "street_address": "123 Fake St",
                 "unit": None,
