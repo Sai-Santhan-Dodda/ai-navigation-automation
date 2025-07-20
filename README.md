@@ -124,9 +124,22 @@ uv run automation_agent.py -q "2 step ladder" -p google --suburb-address "Anytow
 uv run automation_agent.py -q "treadmill" -p groq --street-address "123 Main St" --unit "Apt 4B" --suburb-address "Anytown" --state "VIC" --postcode "3000"
 ```
 
-## Evaluation
+## Evaluation Setup
 
-### Running the agent evaluation with Laminar
+### If you don't have the standalone `lmnr` directory, clone Laminar repository into a separate directory from `browser-use-implementation` directory. Refer to the [Laminar self-hosting setup](https://docs.lmnr.ai/self-hosting/setup) for more information on how to self-host Laminar.
+
+### Navigate to the `lmnr` directory and run the following command to start the Laminar server (`docker` is required)
+
+```bash
+cd lmnr
+docker compose up -d
+```
+
+### If everthing is setup correctly, you should be able to access the Laminar dashboard running at http://localhost:5667 in your preferred browser
+
+### Create a project in the Laminar dashboard and generate an API key for that project and add it to the `.env` file
+
+### Running the agent success rate evaluation with Laminar
 
 ```bash
 uv run agent_evaluation.py
