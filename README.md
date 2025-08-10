@@ -2,7 +2,7 @@
 
 This project implements a browser automation agent for `Bunnings website` using the `browser-use` library, orchestrated via the `laminar` framework, managed with `uv` for Python environments, and running in Brave Browser for stealth and CAPTCHA bypass.
 
-<iframe src="[AI Website Automation Project Demo Video](https://www.loom.com/share/9469c70441aa49778e2aae779c4367bc?sid=4a853ef7-ca68-4ed7-90ec-c138cb912a12)" frameborder="0" allowfullscreen></iframe>
+[AI Website Automation Project Demo Video](https://www.loom.com/share/9469c70441aa49778e2aae779c4367bc?sid=4a853ef7-ca68-4ed7-90ec-c138cb912a12)
 
 ## Table of Contents
 
